@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Licences" ALTER COLUMN "EndDate" DROP NOT NULL,
+ALTER COLUMN "EndDate" DROP DEFAULT;

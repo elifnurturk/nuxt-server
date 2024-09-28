@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+//"npx prisma migrate dev" to update db up to schema and then "npx prisma generate"
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+   url       = "postgres://postgres.ldlrzefbhqulajkhczbq:licenceCheckMTY@aws-0-eu-central-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+  directUrl = "postgres://postgres.ldlrzefbhqulajkhczbq:licenceCheckMTY@aws-0-eu-central-1.pooler.supabase.com:5432/postgres"
+ }
+
+model Users {
+  Id       Int      @id @default(autoincrement()) // Primary key, auto-incrementing integer
+  Name     String
+  Surname  String
+  Email    String   @unique
+  CreateAt DateTime @default(now())  
+  Licences Licences[] 
+  Logs     Logs[]            
+}
+
+model Products {
+  Id        Int      @id @default(autoincrement()) // Primary key, auto-incrementing integer
+  Name      String
+  Details   String
+  CreatedAt DateTime @default(now()) 
+  Licences  Licences[]        
+}
+
+model Licences {
+  Id         Int      @id @default(autoincrement()) // Primary key, auto-incrementing integer
+  LicenceKey String   @unique
+  StartDate  DateTime @default(now())  
+  EndDate    DateTime?  //admin enter
+  User       Users    @relation(fields: [UserMail], references: [Email]) // Define relationship with Users table
+  UserMail   String
+  Product    Products @relation(fields: [ProductId], references: [Id]) // Define relationship with Products table
+  ProductId  Int      // Foreign key referencing Products table
+  Logs       Logs[]
+}
+
+model Logs {
+  Id           Int       @id @default(autoincrement()) // Primary key, auto-incrementing integer
+  Licence      Licences  @relation(fields: [LicenceKey], references: [LicenceKey])
+  LicenceKey   String    
+  IP           String    
+  User         Users     @relation(fields: [UserMail], references: [Email]) 
+  UserMail     String
+  LoginDate    DateTime  @default(now())
+  LogoutDate   DateTime?  
+}
+
+model Admin {
+  Id         Int      @id @default(autoincrement()) // Primary key, auto-incrementing integer
+  Username   String   @unique
+  Password   String
+}

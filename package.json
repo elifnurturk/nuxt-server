@@ -1,0 +1,53 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "nuxt start",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prisma:migrate:dev": "npx prisma migrate dev",
+    "prisma:migrate:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio"
+  },
+  "dependencies": {
+    "@element-plus/nuxt": "^1.0.9",
+    "@nuxt/bridge": "^3.2.0",
+    "@nuxt/http": "^0.6.4",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.6",
+    "@prisma/client": "^5.16.1",
+    "@sidebase/nuxt-session": "^0.2.8",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "connect-pg-simple": "^9.0.1",
+    "consola": "^3.0.1",
+    "cookie-session": "^2.1.0",
+    "crypto-js": "^4.2.0",
+    "element-plus": "^2.7.2",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "nuxt": "^3.11.2",
+    "pg": "^8.11.5",
+    "primevue": "^3.51.0",
+    "tippy.js": "^6.3.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vue3-promise-dialog": "^0.3.4",
+    "jwt-decode":"4.0.0"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.7",
+    "@nuxt/typescript-build": "^3.0.2",
+    "autoprefixer": "^10.4.19",
+    "nuxt-primevue": "^0.3.1",
+    "postcss": "^8.4.38",
+    "prisma": "^5.7.0",
+    "sass": "^1.75.0",
+    "typescript": "^5.4.5"
+  }
+}

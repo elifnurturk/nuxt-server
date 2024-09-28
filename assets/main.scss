@@ -1,0 +1,40 @@
+﻿// Variables
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+
+// Global Styles
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+}
+
+h1, h2, h3 {
+  color: $primary-color;
+}
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Utility Classes
+%button-styles {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  @extend %button-styles;
+  background-color: $primary-color;
+  color: #fff;
+}
+
+.btn-secondary {
+  @extend %button-styles;
+  background-color: $secondary-color;
+  color: #fff;
+}
